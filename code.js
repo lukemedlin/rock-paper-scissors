@@ -83,23 +83,3 @@ function game() {
     console.log(winnnerMsg);
 
 }
-
-
-
-// if player === rock and 
-// 
-// 
-//  
-//  
-//  
-// Computer chooses rock, paper, or scissors
-// User inputs rock, paper, or scissors
-// 
-// Compare the computer and user guesses
-// 1. Rock beats paper
-// 2. Paper beats rock
-// 3. Scissors beats paper
-// 4. Tie if both guess the same
-//
-// Log whether the computer or user wins
-
