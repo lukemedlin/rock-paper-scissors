@@ -19,9 +19,9 @@ function getComputerChoice () {
     return compChoice;
 }
 
-function playRound(playerSelection, computerSelection) {
-    playerSelection = prompt("What do you choose?");
-    computerSelection = getComputerChoice();
+function playRound(event) {
+    playerSelection = this.id.toString();
+    let computerSelection = getComputerChoice();
     
     let firstLetter = playerSelection.slice(0,1).toUpperCase();
     playerSelection = firstLetter + playerSelection.slice(1).toLowerCase(); 
@@ -50,7 +50,14 @@ function playRound(playerSelection, computerSelection) {
         winner = "Computer";
         result = "You Lose! Scissors beats Paper";
     }
+
+    document.querySelector(".result-container").textContent = result;
     console.log(result);
     return winner;
 }
 
+
+const buttonChoices = document.querySelectorAll(".choice");
+for (let buttonChoice of buttonChoices) {
+    buttonChoice.addEventListener("click", playRound);
+}
