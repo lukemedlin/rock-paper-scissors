@@ -1,6 +1,3 @@
-console.log("Hello World!");
-
-
 function getComputerChoice () {
     let randNum = Math.floor(Math.random() * 3);
     let compChoice;
@@ -19,7 +16,13 @@ function getComputerChoice () {
     return compChoice;
 }
 
+
+
 function playRound(event) {
+    if (gameOver === true) {
+        return;
+    }
+
     playerSelection = this.id.toString();
     let computerSelection = getComputerChoice();
     
@@ -32,30 +35,66 @@ function playRound(event) {
         winner = "Tie";
         result = "Tie";
     } else if (playerSelection === "Rock" && computerSelection === "Paper") {
-        winner = "Computer";
+        computerScore++;
         result = "You Lose! Paper beats Rock";
     } else if (playerSelection === "Rock" && computerSelection === "Scissors") {
-        winner = "Player";
+        playerScore++;
         result = "You Win! Rock beats Scissors";
     } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
-        winner = "Player";
+        playerScore++;
         result = "You Win! Scissors beats Paper";
     } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
-        winner = "Computer";
+        computerScore++;
         result = "You Lose! Rock beats Scissors";
     } else if (playerSelection === "Paper" && computerSelection === "Rock") {
-        winner = "Player";
+        playerScore++;
         result = "You Win! Paper beats Rock";
     } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
-        winner = "Computer";
+        computerScore++;
         result = "You Lose! Scissors beats Paper";
     }
 
-    document.querySelector(".result-container").textContent = result;
-    console.log(result);
-    return winner;
+    updateScores();
+
+    scoreboardResult.textContent = result;
+
+    checkWinner();
 }
 
+let gameOver = false;
+let playerScore = 0;
+let computerScore = 0;
+
+
+let scoreboardResult = document.querySelector(".result-container");
+
+function checkWinner () {
+    if (playerScore > 4) {
+        scoreboardResult.textContent = "You win!"
+        gameOver = true;
+    } else if (computerScore > 4) {
+        scoreboardResult.textContent = "You lose!"
+        gameOver = true;
+    }
+}
+
+function updateScores() {
+    document.querySelector(".player-score").textContent = playerScore;
+    document.querySelector(".computer-score").textContent = computerScore;
+}
+
+
+function newGame() {
+    gameOver = false;
+    playerScore = 0;
+    computerScore = 0;
+    updateScores();
+    document.querySelector(".result-container").textContent = '';
+}
+
+
+
+document.querySelector("#new-game").addEventListener("click", newGame);
 
 const buttonChoices = document.querySelectorAll(".choice");
 for (let buttonChoice of buttonChoices) {
