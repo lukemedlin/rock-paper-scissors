@@ -1,0 +1,33 @@
+.main-container {
+    margin: 150px auto 0;
+    max-width: 960px;
+}
+
+.choice-container {
+    display:flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.choice {
+    width: 250px;
+    height: 150px;
+    background: #D9D9D9;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+    filter: blur(2px);
+}
+
+.choice:hover {
+    filter: blur(0px);
+}
+
+.choice:active {
+    transform: translateY(4px);
+}
+
+img {
+    height: 70%;
+}
