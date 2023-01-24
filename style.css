@@ -1,13 +1,13 @@
 .main-container {
     margin: 150px auto 0;
-    max-width: 960px;
+    max-width: 820px;
 }
 
 .choice-container {
     display:flex;
     gap: 30px;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .choice {
@@ -30,4 +30,11 @@
 
 img {
     height: 70%;
+}
+
+.result-container {
+    background: #D9D9D9;
+    height: 120px;
+    margin-top: 40px;
+    border: 1px solid #000000;
 }
